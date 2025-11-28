@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: agenda-postgres
+    environment:
+      POSTGRES_DB: agendadb
+      POSTGRES_USER: agenda_user
+      POSTGRES_PASSWORD: agenda_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - agenda-network
+
+  tomcat:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: agenda-tomcat
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src:/app/src
+      - ./pom.xml:/app/pom.xml
+      - maven_cache:/root/.m2
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: roomflowdb
+      DB_USER: roomflow
+      DB_PASSWORD: roomflow
+      MAVEN_OPTS: -Xmx512m
+      JAVA_OPTS: -Xmx512m -Xms256m
+    depends_on:
+      - postgres
+    networks:
+      - agenda-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  maven_cache:
+
+networks:
+  agenda-network:
+    driver: bridge

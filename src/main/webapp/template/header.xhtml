@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .header {
+            height: 15vh;
+            background-color: #2c3e50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .nav {
+            height: 40px;
+            background-color: #34495e;
+            display: grid;
+            grid-template-columns: repeat(5, 20%);
+            align-items: center;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 0;
+            background-color: #3498db;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav a:hover {
+            background-color: #2980b9;
+        }
+        
+        .content {
+            height: calc(85vh - 40px);
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #ecf0f1;
+        }
+    </style>
+</h:head>
+
+<h:body>
+    <div class="header">
+        <h1>Room Flow</h1>
+    </div>
+    <nav class="nav">
+        <a href="index.xhtml">Home</a>
+        <a href="usuarios.xhtml">Usuários</a>
+        <a href="pacientes.xhtml">Pacientes</a>
+        <a href="unidades.xhtml">Unidades de Saúde</a>
+        <a href="salas.xhtml">Salas</a>
+    </nav>
+</h:body>
+</html>
