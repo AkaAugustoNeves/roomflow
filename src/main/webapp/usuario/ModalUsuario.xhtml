@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition>
+    <p:dialog id="modalUsuario"
+              header="Detalhes do Usuário" 
+              widgetVar="dlgUsuario" 
+              modal="true" 
+              resizable="false"
+              width="600"
+              responsive="true"
+              appendTo="@(form)">
+        
+        <h:panelGrid columns="2" cellpadding="10" style="width: 100%;">
+            <h:outputLabel value="ID:" style="font-weight: bold;"/>
+            <h:outputText value="#{usuarioBean.usuarioSelecionado.id}"/>
+            
+            <h:outputLabel value="Nome:" style="font-weight: bold;"/>
+            <h:outputText value="#{usuarioBean.usuarioSelecionado.nome}"/>
+            
+            <h:outputLabel value="Email:" style="font-weight: bold;"/>
+            <h:outputText value="#{usuarioBean.usuarioSelecionado.email}"/>
+            
+            <h:outputLabel value="CPF:" style="font-weight: bold;"/>
+            <h:outputText value="#{usuarioBean.usuarioSelecionado.cpf}" converter="cpfConverter"/>
+            
+            <h:outputLabel value="Data de Cadastro:" style="font-weight: bold;" rendered="#{usuarioBean.usuarioSelecionado.dataCadastro != null}"/>
+            <h:outputText value="#{usuarioBean.usuarioSelecionado.dataCadastro}" rendered="#{usuarioBean.usuarioSelecionado.dataCadastro != null}" converter="localDateTimeConverter"/>
+            
+            <h:outputLabel value="Período de Cadastro:" style="font-weight: bold;" rendered="#{usuarioBean.usuarioSelecionado.periodoCadastro != null}"/>
+            <h:outputText value="#{usuarioBean.usuarioSelecionado.periodoCadastro}" rendered="#{usuarioBean.usuarioSelecionado.periodoCadastro != null}" converter="localDateTimeConverter"/>
+        </h:panelGrid>
+    </p:dialog>
+</ui:composition>
+</html>
