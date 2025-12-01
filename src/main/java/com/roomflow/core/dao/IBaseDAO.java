@@ -7,5 +7,6 @@ import com.roomflow.core.model.BaseEntity;
 public interface IBaseDAO<E extends BaseEntity> {
     
     List<E> getAll();
+    E getById(Long id);
 
 }

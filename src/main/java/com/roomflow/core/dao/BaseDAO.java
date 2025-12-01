@@ -33,6 +33,16 @@ public abstract class BaseDAO<E extends BaseEntity> implements IBaseDAO<E> {
         }
     }
 
+    @Override
+    public E getById(Long id) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            return em.find(entityClass, id);
+        } finally {
+            em.close();
+        }
+    }
+
     protected EntityManager getEntityManager() {
         return JPAUtil.getEntityManager();
     }

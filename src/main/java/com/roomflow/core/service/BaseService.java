@@ -16,5 +16,10 @@ public abstract class BaseService<E extends BaseEntity, DAO extends BaseDAO<E>> 
     public List<E> getAll() {
         return DAO.getAll();
     }
+
+    @Override
+    public E getById(Long id) {
+        return DAO.getById(id);
+    }
     
 }
