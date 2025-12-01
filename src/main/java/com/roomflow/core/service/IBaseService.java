@@ -7,4 +7,7 @@ public interface IBaseService<E> {
     List<E> getAll();
     E getById(Long id);
 
+    void beforeCreate(E entity);
+    E create(E entity);
+
 }

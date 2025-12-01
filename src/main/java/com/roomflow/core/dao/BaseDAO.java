@@ -43,6 +43,24 @@ public abstract class BaseDAO<E extends BaseEntity> implements IBaseDAO<E> {
         }
     }
 
+    @Override
+    public E create(E entity) {
+        EntityManager em = JPAUtil.getEntityManager();
+        try {
+            em.getTransaction().begin();
+            em.persist(entity);
+            em.getTransaction().commit();
+            return entity;
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            em.close();
+        }
+    }
+
     protected EntityManager getEntityManager() {
         return JPAUtil.getEntityManager();
     }

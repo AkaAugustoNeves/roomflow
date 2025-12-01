@@ -8,5 +8,6 @@ public interface IBaseDAO<E extends BaseEntity> {
     
     List<E> getAll();
     E getById(Long id);
+    E create(E entity);
 
 }
