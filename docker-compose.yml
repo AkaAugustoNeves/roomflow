@@ -5,9 +5,9 @@ services:
     image: postgres:15-alpine
     container_name: agenda-postgres
     environment:
-      POSTGRES_DB: agendadb
-      POSTGRES_USER: agenda_user
-      POSTGRES_PASSWORD: agenda_pass
+      POSTGRES_DB: roomflowdb
+      POSTGRES_USER: roomflow
+      POSTGRES_PASSWORD: roomflow
     ports:
       - "5432:5432"
     volumes:
@@ -32,7 +32,7 @@ services:
       DB_NAME: roomflowdb
       DB_USER: roomflow
       DB_PASSWORD: roomflow
-      MAVEN_OPTS: -Xmx512m
+      MAVEN_OPTS: -Xmx1024m
       JAVA_OPTS: -Xmx512m -Xms256m
     depends_on:
       - postgres
