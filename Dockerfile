@@ -48,6 +48,9 @@ cp target/ROOT.war $CATALINA_HOME/webapps/\n\
 echo "🔥 Starting Tomcat..."\n\
 catalina.sh start\n\
 \n\
+# Follow Tomcat logs in background\n\
+tail -f $CATALINA_HOME/logs/catalina.out 2>/dev/null &\n\
+\n\
 echo "✅ Application started at http://localhost:8080"\n\
 echo "👀 Watching for file changes (polling mode)..."\n\
 echo "💡 Save any file in src/ to trigger rebuild"\n\
